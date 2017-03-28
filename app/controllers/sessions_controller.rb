@@ -1,14 +1,18 @@
+#Since we are making view task in the controller, which is a bad thing ;-)...
+include ActionView::Helpers::TextHelper
+
 class SessionsController < ApplicationController
 	def create
 		auth = request.env['omniauth.auth']
 
 		#render :text => request.env['rack.auth'].inspect
 		render :text =>  "<html><body>" +
-				"<p>" + JSON.pretty_generate(request.env['omniauth.auth']) + "</p>" +
+				"<p><b>You can use the data in this returned hash. The info fields are coming from provider (facebook for our example):</b></p><nobr><p>" + simple_format(JSON.pretty_generate(request.env)) + "</p><hr>" +
+				"<nobr><nobr><b>TEST AREA</b>" + simple_format(JSON.pretty_generate(request.env['omniauth.auth'])) + " " +
 				"<p>" + "uid: " + request.env['omniauth.auth']['uid'] + "</p>" +
 				"<p>" + "provider: " + request.env['omniauth.auth']['provider'] + "</p>" +
 				"<p>" + "name: " + request.env['omniauth.auth']['info']['name'] + "</p>" +
-				"<p>" + "image: " + "<image src='" + request.env['omniauth.auth']['info']['image'] + "'></img>" + "</p>" +
+				"<p>" + "image: " + "<image src='" + request.env['omniauth.auth']['info']['image'] + "'></img>" + "</p>" +				
 				"</body></html>"
 	end
 
