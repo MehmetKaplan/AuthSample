@@ -95,7 +95,7 @@ This structure is generated for MOCMON user handling.
 	export FB_MOCMON_Test1_Secret=${l_ary[2]}
 	```
 
-	PS: It is better to restart rails server and *full restart* your development enviroment here if you have already gone through step 5. (Remember, application id is taken from the bash which needs to be reloaded!)
+	PS: It is better to restart rails server and *full restart* your development enviroment here. (Remember, application id is taken from the bash which needs to be reloaded!)
 
 4. Install OmniAuth
 
